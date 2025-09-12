@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Corruption Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Corruption Reporting Platform</h1>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('report') }}">Submit Report</a>
+    </header>
+
+    <div class="container">
+        <h2>Recent Reports</h2>
+        <ul>
+            {% for report in reports %}
+            <li>
+                <strong>{{ report.title }}</strong> 
+                ({{ report.category }}) <br>
+                {{ report.description }} <br>
+                <small>{{ report.date.strftime('%Y-%m-%d %H:%M') }}</small>
+            </li>
+            {% else %}
+            <li>No reports yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
